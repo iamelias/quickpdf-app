@@ -4,7 +4,7 @@
 //
 //  Created by Elias Hall on 6/9/20.
 //  Copyright © 2020 Elias Hall. All rights reserved.
-// App Name:  BasicPDF
+// App Name:  QuickPDF
 
 import Foundation
 import UIKit
