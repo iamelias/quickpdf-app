@@ -1,24 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rbH-xX-sxb">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--PDF Creator-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PDFController" customModule="PDFCreator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pFi-oM-xfx">
+                                <rect key="frame" x="67.666666666666686" y="484" width="240" height="294"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="294" id="0DJ-PT-6JE"/>
+                                    <constraint firstAttribute="width" constant="240" id="nWo-vn-R5s"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljl-Kb-Tl4">
+                                <rect key="frame" x="154" y="372.66666666666669" width="67" height="67"/>
+                                <state key="normal" image="cameraButton1PDF"/>
+                                <connections>
+                                    <action selector="cameraButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yNt-m3-EI3"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="yuw-mw-3uk">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="yuw-mw-3uk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0qg-2c-Lv4"/>
+                            <constraint firstItem="pFi-oM-xfx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1cp-aa-NyR"/>
+                            <constraint firstItem="ljl-Kb-Tl4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3PP-2H-ffa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yuw-mw-3uk" secondAttribute="trailing" id="5MG-4F-5Tq"/>
+                            <constraint firstItem="ljl-Kb-Tl4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5pN-SU-KAY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yuw-mw-3uk" secondAttribute="bottom" id="Ihf-PH-4jq"/>
+                            <constraint firstItem="yuw-mw-3uk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UpU-na-huH"/>
+                            <constraint firstItem="pFi-oM-xfx" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="sRb-2A-zZY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="PDF Creator" id="6gy-Pc-QeY">
+                        <barButtonItem key="leftBarButtonItem" title="Preview" id="1Iu-jw-W7D">
+                            <connections>
+                                <action selector="previewButtonTapped:" destination="BYZ-38-t0r" id="jDO-NI-2Q5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="yuw-mw-3uk" id="8s3-Vu-e8u"/>
+                        <outlet property="imageView" destination="pFi-oM-xfx" id="nlI-jF-U4U"/>
+                        <segue destination="Yi1-GE-ouP" kind="show" identifier="previewSegue" id="xSU-qe-V2z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1080.8" y="129.31034482758622"/>
+        </scene>
+        <!--Pdf Preview Controller-->
+        <scene sceneID="sPm-66-zS2">
+            <objects>
+                <viewController id="Yi1-GE-ouP" customClass="PdfPreviewController" customModule="PDFCreator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1J0-1e-WSe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QrI-7L-RN8" customClass="PDFView">
+                                <rect key="frame" x="16" y="88" width="343" height="690"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="iCs-pN-mBo"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VQR-24-ffm">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="7RF-z9-8aK">
+                            <connections>
+                                <action selector="shareButton:" destination="Yi1-GE-ouP" id="oPs-LK-pUO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="pdfView" destination="QrI-7L-RN8" id="umj-on-EWo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rwz-2I-Imv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2088.8000000000002" y="128.57142857142858"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cls-ef-V9N">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rbH-xX-sxb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NAO-4p-GSx">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="P0G-IC-THF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LJx-zb-Qn3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.40000000000001" y="129.31034482758622"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cameraButton1PDF" width="66.333335876464844" height="66.333335876464844"/>
+    </resources>
 </document>
